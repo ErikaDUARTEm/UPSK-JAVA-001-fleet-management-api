@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/UPSK-JAVA-001-fleet-management-api/server" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/UPSK-JAVA-001-fleet-management-api/server/Api/src/main/java/fleetmanagement" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/UPSK-JAVA-001-fleet-management-api/server/Api/src/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/UPSK-JAVA-001-fleet-management-api/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/server/Api" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/server/Api/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/server/Api/src/main" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/server/Api/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/server/Api/src/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/server/fleet-management/src/main/java/ApiRest" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="20 (2)" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="mockito.core" level="application" />
+    <orderEntry type="library" name="au.dius.pact.jvm.consumer.junit5" level="application" />
+    <orderEntry type="library" name="springframework.boot.spring.autoconfigure" level="application" />
+    <orderEntry type="library" name="springframework.webflow.binding" level="application" />
+    <orderEntry type="library" name="fr.opensagres.xdocreport.springframework.web.servlet.view" level="application" />
+    <orderEntry type="library" name="springframework.spring.test" level="application" />
+    <orderEntry type="library" name="springframework.boot.spring.starter.thymeleaf" level="application" />
+  </component>
+</module>
