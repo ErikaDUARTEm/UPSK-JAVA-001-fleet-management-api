@@ -15,7 +15,7 @@
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/server/fleet-management/src/main/java/ApiRest" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="20 (2)" jdkType="JavaSDK" />
+    <orderEntry type="jdk" jdkName="21" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="mockito.core" level="application" />
     <orderEntry type="library" name="au.dius.pact.jvm.consumer.junit5" level="application" />
