@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @EnableAutoConfiguration
 @SpringBootApplication
-@EntityScan(basePackages = "com.api.fleetManagement.model")
+@EntityScan(basePackages = "com/api/fleetManagement/model")
 public class FleetManagementApplication {
 
 	public static void main(String[] args) {

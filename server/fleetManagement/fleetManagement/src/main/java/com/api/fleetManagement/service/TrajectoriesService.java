@@ -1,5 +1,6 @@
 package com.api.fleetManagement.service;
 
+import com.api.fleetManagement.model.Taxi;
 import com.api.fleetManagement.model.Trajectories;
 import com.api.fleetManagement.repository.TrajectoriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,8 @@ public class TrajectoriesService {
         this.trajectoriesRepository = trajectoriesRepository;
     }
 
-    public Trajectories findLastLocationByTaxiId(int taxiId) {
-        return trajectoriesRepository.findLastLocationByTaxiId(taxiId);
-    }
 
+    public Trajectories getTaxiById(int id) {
+        return trajectoriesRepository.findById(id);
+    }
 }
