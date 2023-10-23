@@ -12,10 +12,8 @@ public class Trajectories {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "id_taxi", insertable = false, updatable = false)
-    private int id_taxi;
     @ManyToOne
-    @JoinColumn(name = "id_taxi")
+    @JoinColumn(name = "id_taxi", referencedColumnName = "id")
     private Taxi taxi;
 
     private Date fecha;
@@ -23,7 +21,7 @@ public class Trajectories {
     private double latitud;
     private double longitud;
 
-    protected Trajectories() {}
+    public Trajectories() {}
 
     public Trajectories(int id, Taxi taxi, Date fecha, Time hora, double latitud, double longitud) {
         this.id = id;
@@ -41,13 +39,6 @@ public class Trajectories {
         this.id = id;
     }
 
-    public int getId_taxi() {
-        return id_taxi;
-    }
-
-    public void setId_taxi(int id_taxi) {
-        this.id_taxi = id_taxi;
-    }
 
     public Date getFecha() {
         return fecha;
