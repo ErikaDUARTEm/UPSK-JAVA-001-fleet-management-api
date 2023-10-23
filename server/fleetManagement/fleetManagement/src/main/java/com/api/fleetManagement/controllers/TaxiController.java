@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import java.util.List;
 public class TaxiController {
 
     private final TaxiService taxiService;
-    private Taxi taxi;
+
 
     @Autowired
     public TaxiController(TaxiService taxiService) {
@@ -26,17 +27,10 @@ public class TaxiController {
     }
 
     @GetMapping("/taxi/{id}")
-        public Taxi getTaxiById(@PathVariable int id) {
+    public Taxi getTaxiById(@PathVariable int id) {
             return taxiService.getTaxiById(id);
         }
 
-    @GetMapping("/all/taxis")
-    public Object getAll() {
-        return taxiService.getAll();
-    }
 
-    @GetMapping("/last/trajectories/{id}")
-    public List<Trajectories> getTrajector (@PathVariable int id){
-        return taxiService.getTraject(id);
-    }
+
 }

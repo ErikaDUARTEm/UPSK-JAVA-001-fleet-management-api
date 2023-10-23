@@ -19,15 +19,5 @@ public class TrajectoriesController {
         this.trajectoriesService = trajectoriesService;
     }
 
-    @GetMapping("/trajectories/{id}")
-    public ResponseEntity<Trajectories> getTrajectoryById(@PathVariable int id) {
-        Trajectories trajectory = trajectoriesService.getTaxiById(id);
 
-        if (trajectory != null) {
-            Taxi taxi = trajectory.getTaxi();
-            return new ResponseEntity<>(new Trajectories(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
 }

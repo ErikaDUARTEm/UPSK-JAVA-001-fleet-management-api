@@ -16,7 +16,5 @@ public class TrajectoriesService {
     }
 
 
-    public Trajectories getTaxiById(int id) {
-        return trajectoriesRepository.findById(id);
-    }
+
 }
