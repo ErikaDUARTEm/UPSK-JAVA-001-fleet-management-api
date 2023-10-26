@@ -6,6 +6,8 @@ import com.api.fleetManagement.repository.TrajectoriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TrajectoriesService {
     private final TrajectoriesRepository trajectoriesRepository;
@@ -16,7 +18,5 @@ public class TrajectoriesService {
     }
 
 
-    public Trajectories getTaxiById(int id) {
-        return trajectoriesRepository.findById(id);
-    }
+
 }

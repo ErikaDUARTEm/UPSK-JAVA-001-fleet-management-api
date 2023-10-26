@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @Configuration
 @RestController
@@ -19,15 +21,6 @@ public class TrajectoriesController {
         this.trajectoriesService = trajectoriesService;
     }
 
-    @GetMapping("/trajectories/{id}")
-    public ResponseEntity<Trajectories> getTrajectoryById(@PathVariable int id) {
-        Trajectories trajectory = trajectoriesService.getTaxiById(id);
 
-        if (trajectory != null) {
-            Taxi taxi = trajectory.getTaxi();
-            return new ResponseEntity<>(new Trajectories(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
+
 }
