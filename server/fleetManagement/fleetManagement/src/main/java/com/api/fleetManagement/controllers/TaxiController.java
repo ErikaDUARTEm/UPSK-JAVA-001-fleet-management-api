@@ -26,11 +26,9 @@ public class TaxiController {
 
     }
 
-    @GetMapping("/taxi/{id}")
-    public Taxi getTaxiById(@PathVariable int id) {
-            return taxiService.getTaxiById(id);
-        }
 
-
-
+    @GetMapping("/all/taxis")
+    public List<Taxi> getAllTaxis(){
+        return taxiService.getAllTaxis();
+    }
 }
