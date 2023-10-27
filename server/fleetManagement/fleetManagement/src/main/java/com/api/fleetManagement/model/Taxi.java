@@ -10,7 +10,7 @@ import java.util.List;
 public class Taxi {
     @Id
     private int id;
-    private String placa;
+    private String license;
 
     @JsonIgnore
     @OneToMany(mappedBy = "taxi",  cascade = CascadeType.ALL)
@@ -18,9 +18,9 @@ public class Taxi {
 
     protected Taxi() {}
 
-    public Taxi(int id, String placa, List<Trajectories> trajectories) {
+    public Taxi(int id, String license, List<Trajectories> trajectories) {
         this.id = id;
-        this.placa = placa;
+        this.license = license;
         this.trajectories = trajectories;
 
     }
@@ -30,12 +30,12 @@ public class Taxi {
     public void setId(int id){
         this.id = id;
     }
-    public String getPlaca() {
-        return placa;
+    public String getLicense() {
+        return license;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
+    public void setLicense(String placa) {
+        this.license = license;
     }
     public List<Trajectories> getTrajectories() {
         return trajectories;

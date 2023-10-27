@@ -26,7 +26,6 @@ public class TaxiController {
 
     }
 
-
     @GetMapping("/all/taxis")
     public List<Taxi> getAllTaxis(){
         return taxiService.getAllTaxis();
