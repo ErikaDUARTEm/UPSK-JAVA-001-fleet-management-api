@@ -1,54 +1,43 @@
 package com.api.fleetManagement.Dto;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Date;
 
 public class TaxiAllTrajectoriesDTO {
 
-        private Date fecha;
-        private Time hora;
-        private double latitud;
-        private double longitud;
+        private Date date;
+
+        private double latitude;
+        private double longitude;
 
 
-        public TaxiAllTrajectoriesDTO(Date fecha, Time hora, double latitud, double longitud) {
-            this.fecha = fecha;
-            this.hora = hora;
-            this.latitud = latitud;
-            this.longitud = longitud;
+        public TaxiAllTrajectoriesDTO(Date date, double latitude, double longitude) {
+            this.date = date;
+            this.latitude = latitude;
+            this.longitude = longitude;
         }
 
-        public Date getFecha() {
-            return fecha;
+        public Date getDate() {
+            return date;
         }
 
-        public Date setFecha(Date fecha) {
-            this.fecha = fecha;
-            return fecha;
+        public void setDate(Date date) {
+            this.date = date;
         }
 
-        public Time getHora() {
-            return hora;
+        public double getLatitude() {
+            return latitude;
         }
 
-        public void setHora(Time hora) {
-            this.hora = hora;
+        public void setLatitude(double latitude) {
+            this.latitude = latitude;
         }
 
-        public double getLatitud() {
-            return latitud;
+        public double getLongitude() {
+            return longitude;
         }
 
-        public void setLatitud(double latitud) {
-            this.latitud = latitud;
-        }
-
-        public double getLongitud() {
-            return longitud;
-        }
-
-        public void setLongitud(double longitud) {
-            this.longitud = longitud;
+        public void setLongitude(double longitude) {
+            this.longitude = longitude;
         }
 
 

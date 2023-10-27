@@ -1,9 +1,9 @@
 package com.api.fleetManagement.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Date;
 
 @Entity
 @Table(name = "trajectories")
@@ -12,24 +12,24 @@ public class Trajectories {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_taxi", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "taxi_id", referencedColumnName = "id")
+    @JsonIgnore
     private Taxi taxi;
 
-    private Date fecha;
-    private Time hora;
-    private double latitud;
-    private double longitud;
+    private Date date;
+
+    private double latitude;
+    private double longitude;
 
     public Trajectories() {}
 
-    public Trajectories(int id, Taxi taxi, Date fecha, Time hora, double latitud, double longitud) {
+    public Trajectories(int id, Taxi taxi, Date date, double latitude, double longitude) {
         this.id = id;
         this.taxi = taxi;
-        this.fecha = fecha;
-        this.hora = hora;
-        this.latitud = latitud;
-        this.longitud = longitud;
+        this.date = date;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public int getId() {
@@ -40,36 +40,30 @@ public class Trajectories {
     }
 
 
-    public Date getFecha() {
-        return fecha;
+    public Date getDate() {
+        return date;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public Date setDate(Date date) {
+        this.date = date;
+        return date;
     }
 
-    public Time getHora() {
-        return hora;
+
+    public double getLatitude() {
+        return latitude;
     }
 
-    public void setHora(Time hora) {
-        this.hora = hora;
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 
-    public double getLatitud() {
-        return latitud;
+    public double getLongitude() {
+        return longitude;
     }
 
-    public void setLatitud(double latitud) {
-        this.latitud = latitud;
-    }
-
-    public double getLongitud() {
-        return longitud;
-    }
-
-    public void setLongitud(double longitud) {
-        this.longitud = longitud;
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public Taxi getTaxi() {
