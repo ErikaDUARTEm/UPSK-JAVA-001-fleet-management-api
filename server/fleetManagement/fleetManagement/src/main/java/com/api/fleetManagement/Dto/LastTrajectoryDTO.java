@@ -2,6 +2,8 @@ package com.api.fleetManagement.Dto;
 
 
 import java.util.Date;
+import java.util.List;
+
 public class LastTrajectoryDTO {
     private int id;
     private String license;
