@@ -5,6 +5,7 @@ import com.api.fleetManagement.Dto.TaxiAllTrajectoriesDTO;
 import com.api.fleetManagement.model.Taxi;
 import com.api.fleetManagement.model.Trajectories;
 import jakarta.persistence.Id;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,14 +18,10 @@ import java.util.List;
 @Repository
 public interface TrajectoriesRepository extends JpaRepository<Trajectories, Integer> {
 
-    @Query(value = "SELECT * " +
-            "FROM public.trajectories " +
-            "WHERE taxi_id = :id " +
-            "AND DATE(date) = :date", nativeQuery = true)
+    @Query(value = "SELECT * FROM trajectories t WHERE t.taxi_id = :id AND to_char(t.date, 'YYYY-MM-DD') = :date", nativeQuery = true)
     List<Trajectories> findTrajectoriesByTaxi_idAndDate(
             @Param("id") int id,
-            @Param("date") Date date
-    );
+            @Param("date") String date);
 
 
 }
