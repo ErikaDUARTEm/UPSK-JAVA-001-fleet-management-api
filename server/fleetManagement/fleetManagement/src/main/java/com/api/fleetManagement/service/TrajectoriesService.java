@@ -23,26 +23,26 @@ public class TrajectoriesService {
     }
 
 
+
     public List<TaxiAllTrajectoriesDTO> getAllTrajectories(int id, String dateStr) throws ParseException {
-        // Para que acepte como parámetro la fecha como un string y la convierta en Date
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-        Date date = sdf.parse(dateStr);
+        List<Trajectories> allTrajectories = trajectoriesRepository.findTrajectoriesByTaxi_idAndDate(id, dateStr);
 
-            List<Trajectories> allTrajectories = trajectoriesRepository.findTrajectoriesByTaxi_idAndDate(id, date);
-            List<TaxiAllTrajectoriesDTO> filterTrajectories = new ArrayList<>();
+        List<TaxiAllTrajectoriesDTO> filterTrajectories = new ArrayList<>();
 
-            if (!allTrajectories.isEmpty()) {
-                for (Trajectories trajectory : allTrajectories) {
-                    TaxiAllTrajectoriesDTO dto = new TaxiAllTrajectoriesDTO(trajectory.getDate(), trajectory.getLatitude(), trajectory.getLongitude());
-                    filterTrajectories.add(dto);
-                }
-            } else {
-                System.out.println("No existen trayectorias para este taxi en esta fecha.");
+        if (!allTrajectories.isEmpty()) {
+            for (Trajectories trajectory : allTrajectories) {
+                System.out.println(trajectory.getDate());
+                TaxiAllTrajectoriesDTO dto = new TaxiAllTrajectoriesDTO(trajectory.getDate(), trajectory.getLatitude(), trajectory.getLongitude());
+                filterTrajectories.add(dto);
             }
+        } else {
+            System.out.println("No existen trayectorias para este taxi en esta fecha.");
+        }
         return filterTrajectories;
 
     }
+
 
     public List<LastTrajectoryDTO> lastTrajectory() {
 

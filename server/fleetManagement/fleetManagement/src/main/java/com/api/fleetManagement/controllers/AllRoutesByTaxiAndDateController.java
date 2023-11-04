@@ -6,6 +6,7 @@ import com.api.fleetManagement.model.Trajectories;
 import com.api.fleetManagement.service.TrajectoriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.Page;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ public class AllRoutesByTaxiAndDateController {
     }
 
     @GetMapping("/all")
-    public List<TaxiAllTrajectoriesDTO> getAllTrajectories (@RequestParam("id") int id, @RequestParam("date") String dateStr)  {
+    public List<TaxiAllTrajectoriesDTO> getAllTrajectories (@RequestParam("id") int id, @RequestParam("date") String dateStr){
         try {
             return trajectoriesService.getAllTrajectories( id, dateStr);
         } catch (ParseException e) {
