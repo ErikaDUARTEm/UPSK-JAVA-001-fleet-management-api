@@ -5,10 +5,11 @@ import com.api.fleetManagement.Dto.TaxiAllTrajectoriesDTO;
 import com.api.fleetManagement.model.Trajectories;
 import com.api.fleetManagement.repository.TrajectoriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -24,32 +25,33 @@ public class TrajectoriesService {
 
 
 
-    public List<TaxiAllTrajectoriesDTO> getAllTrajectories(int id, String dateStr) throws ParseException {
-
+    public Page<TaxiAllTrajectoriesDTO> getAllTrajectories(int id, String dateStr, Pageable pageable) throws ParseException {
         List<Trajectories> allTrajectories = trajectoriesRepository.findTrajectoriesByTaxi_idAndDate(id, dateStr);
 
         List<TaxiAllTrajectoriesDTO> filterTrajectories = new ArrayList<>();
 
-        if (!allTrajectories.isEmpty()) {
-            for (Trajectories trajectory : allTrajectories) {
-                System.out.println(trajectory.getDate());
+        int start = (int) pageable.getOffset();
+        int end = Math.min((start + pageable.getPageSize()), allTrajectories.size());
+
+        if (!allTrajectories.isEmpty() && start <= end) {
+            for (int i = start; i < end; i++) {
+                Trajectories trajectory = allTrajectories.get(i);
                 TaxiAllTrajectoriesDTO dto = new TaxiAllTrajectoriesDTO(trajectory.getDate(), trajectory.getLatitude(), trajectory.getLongitude());
                 filterTrajectories.add(dto);
             }
         } else {
             System.out.println("No existen trayectorias para este taxi en esta fecha.");
         }
-        return filterTrajectories;
 
+        return new PageImpl<>(filterTrajectories, pageable, allTrajectories.size());
     }
 
 
-    public List<LastTrajectoryDTO> lastTrajectory() {
-
+    public Page<LastTrajectoryDTO> getLastTrajectory(Pageable pageable) {
         List<Trajectories> allTrajectories = trajectoriesRepository.findAll();
 
         if (allTrajectories.isEmpty()) {
-            return Collections.emptyList();
+            return Page.empty();
         }
 
         Map<Integer, Trajectories> lastTrajectoriesMap = allTrajectories.stream()
@@ -59,8 +61,7 @@ public class TrajectoriesService {
                         (existing, replacement) -> existing.getDate().after(replacement.getDate()) ? existing : replacement
                 ));
 
-
-        return lastTrajectoriesMap.values().stream()
+        List<LastTrajectoryDTO> lastTrajectories = lastTrajectoriesMap.values().stream()
                 .map(trajectory -> {
                     int trajectoryId = trajectory.getTaxi().getId();
                     String trajectoryLicense = trajectory.getTaxi().getLicense();
@@ -70,5 +71,14 @@ public class TrajectoriesService {
                     return new LastTrajectoryDTO(trajectoryId, trajectoryLicense, trajectoryLatitude, trajectoryLongitude, trajectoryDate);
                 })
                 .collect(Collectors.toList());
+
+        int start = (int) pageable.getOffset();
+        int end = Math.min((start + pageable.getPageSize()), lastTrajectories.size());
+
+        if (start < end) {
+            return new PageImpl<>(lastTrajectories.subList(start, end), pageable, lastTrajectories.size());
+        } else {
+            return Page.empty();
+        }
     }
 }
