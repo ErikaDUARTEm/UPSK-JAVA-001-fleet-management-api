@@ -16,7 +16,7 @@ public class Taxi {
     @OneToMany(mappedBy = "taxi",  cascade = CascadeType.ALL)
     List<Trajectories> trajectories;
 
-    protected Taxi() {}
+    public Taxi(int id, String taxi2) {}
 
     public Taxi(int id, String license, List<Trajectories> trajectories) {
         this.id = id;
