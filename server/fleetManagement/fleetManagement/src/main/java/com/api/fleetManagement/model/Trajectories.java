@@ -32,6 +32,9 @@ public class Trajectories {
         this.longitude = longitude;
     }
 
+    public Trajectories(int id, int taxiId, String dateStr, double latitude, double longitude) {
+    }
+
     public int getId() {
         return id;
     }
