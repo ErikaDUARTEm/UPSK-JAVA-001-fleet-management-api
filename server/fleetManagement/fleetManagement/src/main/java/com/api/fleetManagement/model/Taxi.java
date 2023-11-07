@@ -16,14 +16,17 @@ public class Taxi {
     @OneToMany(mappedBy = "taxi",  cascade = CascadeType.ALL)
     List<Trajectories> trajectories;
 
-    public Taxi(int id, String taxi2) {}
-
     public Taxi(int id, String license, List<Trajectories> trajectories) {
         this.id = id;
         this.license = license;
         this.trajectories = trajectories;
 
     }
+    public Taxi() {}
+
+    public Taxi(int i, String taxi1) {
+    }
+
     public int getId() {
         return id;
     }
