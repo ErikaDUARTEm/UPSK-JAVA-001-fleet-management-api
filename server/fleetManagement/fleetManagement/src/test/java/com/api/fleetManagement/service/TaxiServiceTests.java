@@ -1,8 +1,8 @@
-package com.api.fleetManagement;
+package com.api.fleetManagement.service;
 import com.api.fleetManagement.model.Taxi;
 import com.api.fleetManagement.repository.TaxiRepository;
-import com.api.fleetManagement.service.TaxiService;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.data.domain.Page;
@@ -30,6 +30,7 @@ public class TaxiServiceTests {
     }
 
     @Test
+    @DisplayName("Acceder a lista de todos los taxis")
     public void testGetAllTaxis() {
         List<Taxi> taxis = new ArrayList<>();
         taxis.add(new Taxi(1, "Taxi1"));
