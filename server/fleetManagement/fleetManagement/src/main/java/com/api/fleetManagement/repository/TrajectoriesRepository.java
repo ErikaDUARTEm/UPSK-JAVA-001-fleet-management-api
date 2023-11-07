@@ -11,7 +11,7 @@ import java.util.List;
 public interface TrajectoriesRepository extends JpaRepository<Trajectories, Integer> {
 
     @Query(value = "SELECT * FROM trajectories t WHERE t.taxi_id = :id AND to_char(t.date, 'YYYY-MM-DD') = :date", nativeQuery = true)
-    List<Trajectories> findTrajectoriesByTaxi_idAndDate(
+    List<Trajectories> findTrajectoriesByTaxiIdAndDate(
             @Param("id") int id,
             @Param("date") String date);
 

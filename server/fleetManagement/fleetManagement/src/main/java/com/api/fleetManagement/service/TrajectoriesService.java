@@ -26,7 +26,7 @@ public class TrajectoriesService {
 
 
     public Page<TaxiAllTrajectoriesDTO> getAllTrajectories(int id, String dateStr, Pageable pageable) throws ParseException {
-        List<Trajectories> allTrajectories = trajectoriesRepository.findTrajectoriesByTaxi_idAndDate(id, dateStr);
+        List<Trajectories> allTrajectories = trajectoriesRepository.findTrajectoriesByTaxiIdAndDate(id, dateStr);
 
         List<TaxiAllTrajectoriesDTO> filterTrajectories = new ArrayList<>();
 
