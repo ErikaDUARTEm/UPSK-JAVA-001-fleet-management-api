@@ -18,7 +18,6 @@ public class Trajectories {
     private Taxi taxi;
 
     private Date date;
-
     private double latitude;
     private double longitude;
 
